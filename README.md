@@ -10,3 +10,5 @@ You have to create two shortcuts here.
 2. To assign left rotation, Goto `System settings -> Keyboard -> Shortcuts -> Add New -> Command or script`. For `command` field, provide full path for the above scripts (`~/.local/bin/krotate-left.sh`), and some name
 3. Add your required shortcut like `Meta+]`
 5. Repeat same for `krotate-right.sh`
+
+![Screenshot](images/image.png)
