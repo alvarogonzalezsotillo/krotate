@@ -11,9 +11,9 @@ git clone --depth 1 https://github.com/roopeshor/krotate ~/.local/bin/krotate
 ```bash
 chmod +x ~/.local/bin/krotate/krotate-*
 ```
-4. Goto `System settings -> Keyboard -> Shortcuts`.
-5. To create rotate left shortcut, `Add New -> Command or script`. In the `command` field, provide full path for the above scripts (`~/.local/bin/krotate/krkrotate-left.sh`), and some name
-6. Add your required shortcut like `Meta+]`
-7. Repeat same to add rotate right shortcut (command file: `~/.local/bin/krotate/krotate-right.sh`)
+3. Goto `System settings -> Keyboard -> Shortcuts`.
+4. To create rotate left shortcut, `Add New -> Command or script`. In the `command` field, provide full path for the above scripts (`~/.local/bin/krotate/krkrotate-left.sh`), and some name
+5. Add your required shortcut like `Meta+]`
+6. Repeat same to add rotate right shortcut (command file: `~/.local/bin/krotate/krotate-right.sh`)
 
 ![Screenshot](images/image.png)
