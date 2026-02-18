@@ -1,9 +1,16 @@
 #!/bin/bash
 
+# Check dependencies
+if ! command -v jq > /dev/null
+then
+    echo "Dependency not found: jq. Please install with your package manager."
+    exit 1
+fi
+
 STATE_FILE="$HOME/.config/krotate.rc"
 
 # output display name
-OUTPUT_DISP=$(kscreen-doctor -o | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" | grep -oP '(?<=Output: 1 ).*(?=\s)')
+OUTPUT_DISP=$(kscreen-doctor --json | jq  -r '.outputs | map(select(.enabled == true)) | .[0] | .id')
 
 # if empty file, create new
 [[ ! -f "$STATE_FILE" ]] && echo "n" > "$STATE_FILE"
