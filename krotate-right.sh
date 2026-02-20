@@ -7,26 +7,19 @@ then
     exit 1
 fi
 
-STATE_FILE="$HOME/.config/krotate.rc"
-
 # output display name
 OUTPUT_DISP=$(kscreen-doctor --json | jq  -r '.outputs | map(select(.enabled == true)) | .[0] | .id')
 
-# if empty file, create new
-[[ ! -f "$STATE_FILE" ]] && echo "n" > "$STATE_FILE"
+# Rotation
+ROTATION=$(kscreen-doctor --json | jq  -r '.outputs | map(select(.enabled == true)) | .[0] | .rotation')
 
-state=$(cat "$STATE_FILE")
 
-if [[ "$state" == "n" ]]; then
-	echo "r" > "$STATE_FILE"
+if [[ "$ROTATION" == "1" ]]; then
 	kscreen-doctor output."$OUTPUT_DISP".rotation.right
-elif [[ "$state" == "r" ]]; then
-	echo "i" > "$STATE_FILE"
+elif [[ "$ROTATION" == "8" ]]; then
 	kscreen-doctor output."$OUTPUT_DISP".rotation.inverted
-elif [[ "$state" == "i" ]]; then
-	echo "l" > "$STATE_FILE"
+elif [[ "$ROTATION" == "4" ]]; then
 	kscreen-doctor output."$OUTPUT_DISP".rotation.left
 else
-	echo "n" > "$STATE_FILE"
 	kscreen-doctor output."$OUTPUT_DISP".rotation.normal
 fi
